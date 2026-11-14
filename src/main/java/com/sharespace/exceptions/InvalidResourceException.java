@@ -1,0 +1,10 @@
+package com.sharespace.exceptions;
+
+public class InvalidResourceException extends Exception {
+    public InvalidResourceException(String message) {
+        super(message);
+    }
+    public InvalidResourceException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}

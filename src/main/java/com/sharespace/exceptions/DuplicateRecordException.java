@@ -1,0 +1,10 @@
+package com.sharespace.exceptions;
+
+public class DuplicateRecordException extends Exception {
+    public DuplicateRecordException(String message) {
+        super(message);
+    }
+    public DuplicateRecordException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
