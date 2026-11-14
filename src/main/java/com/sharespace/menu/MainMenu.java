@@ -31,13 +31,19 @@ public class MainMenu {
         // Test DB connection first
         System.out.println("\n[ShareSpace] Connecting to database...");
         if (!DBConnection.testConnection()) {
-            System.out.println("\n[ERROR] Cannot connect to the database.");
-            System.out.println("  Please check:");
-            System.out.println("  1. MySQL server is running");
-            System.out.println("  2. Database 'sharespace' exists (run database/sharespace.sql)");
-            System.out.println("  3. Credentials in DBConnection.java (default: root / root)");
-            System.out.println("\nExiting ShareSpace.");
-            return;
+            System.out.println("[DB] Access denied with default password.");
+            System.out.print("Please enter your MySQL root password: ");
+            String pwd = scanner.nextLine().trim();
+            DBConnection.setPassword(pwd);
+            if (!DBConnection.testConnection()) {
+                System.out.println("\n[ERROR] Still cannot connect to the database.");
+                System.out.println("  Please check:");
+                System.out.println("  1. MySQL server is running");
+                System.out.println("  2. Database 'sharespace' exists (run database/sharespace.sql)");
+                System.out.println("  3. Your MySQL root password");
+                System.out.println("\nExiting ShareSpace.");
+                return;
+            }
         }
         System.out.println("[ShareSpace] Database connected successfully.\n");
 
